@@ -2,7 +2,6 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         letters = set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
         s = ''.join((c.lower() for c in s if c in letters))
-        print(s)
         i = 0
         j = len(s) - 1
         while i<j:
