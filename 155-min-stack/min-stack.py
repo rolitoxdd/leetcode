@@ -1,4 +1,4 @@
-class StackNode:
+class Node:
     def __init__(self, val: int, last_min):
         self.val = val
         self.last_min = last_min
@@ -7,13 +7,12 @@ class StackNode:
         return f"val:{self.val}, last_min:{self.last_min}"
 
 class MinStack:
-
     def __init__(self):
         self.stack = []
-        self.min = StackNode(float('inf'), None)
+        self.min = Node(float('inf'), None)
 
     def push(self, val: int) -> None:
-        x = StackNode(val, self.min)
+        x = Node(val, self.min)
         self.stack.append(x)
         if val < self.min.val:
             self.min = x
@@ -24,7 +23,6 @@ class MinStack:
             self.min = self.min.last_min
 
     def top(self) -> int:
-        print(self.stack[-1])
         return self.stack[-1].val
 
     def getMin(self) -> int:
