@@ -5,7 +5,7 @@ class Solution:
         n = len(nums)
         left_multiplication = 1
         right_multiplication = 1
-        for i in range(len(nums)):
+        for i in range(n):
             j = n - 1 - i
             if i != 0:
                 left_multiplication = nums[i-1] * left_multiplication
