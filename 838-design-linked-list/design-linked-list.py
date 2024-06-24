@@ -11,14 +11,18 @@ class MyLinkedList:
         
 
     def get(self, index: int) -> int:
+        res = self.__get_item(index)
+        if res == None:
+            return -1
+        return res.value
+    
+    def __get_item(self, index: int) -> Node:
         current = self.head
         for i in range(index):
             if current == None:
-                return -1
+                return None
             current = current.next
-        if current == None:
-            return -1
-        return current.value
+        return current
         
 
     def addAtHead(self, val: int) -> None:
@@ -35,50 +39,34 @@ class MyLinkedList:
         if not self.head:
             self.head = aux
         self.tail = aux
-        
 
     def addAtIndex(self, index: int, val: int) -> None:
         if index == 0:
             self.addAtHead(val)
             return
-        aux = Node(val)
-        current = self.head
-        if current == None:
+        # the node before
+        node = self.__get_item(index - 1)
+        if node == None:
             return
-        for i in range(index - 1):
-            if current == None or current.next == None:
-                return
-            current = current.next
-        if self.tail == current:
+        if node == self.tail:
             self.addAtTail(val)
             return
-        aux.next = current.next
-        current.next = aux
-
+        aux = Node(val)
+        aux.next = node.next
+        node.next = aux
 
     def deleteAtIndex(self, index: int) -> None:
-        print(index)
         if index == 0:
             if self.tail == self.head:
                 self.tail = self.head.next
             self.head = self.head.next
             return
-        current = self.head
-        for i in range(index - 1):
-            current = current.next
-        if current == None:
+        node = self.__get_item(index - 1)
+        if node == None or node.next == None:
             return
-        if self.tail == current.next:
-            self.tail = current
-            current.next = None
-            return
-        if current != None:
-            if current.next != None:
-                current.next = current.next.next
-            else:
-                current.next = None
-        
-
+        if node.next == self.tail:
+            self.tail = node
+        node.next = node.next.next
         
 
 
