@@ -11,12 +11,12 @@ class MyLinkedList:
         
 
     def get(self, index: int) -> int:
-        res = self.__get_item(index)
+        res = self.__get_node(index)
         if res == None:
             return -1
         return res.value
     
-    def __get_item(self, index: int) -> Node:
+    def __get_node(self, index: int) -> Node:
         current = self.head
         for i in range(index):
             if current == None:
@@ -45,7 +45,7 @@ class MyLinkedList:
             self.addAtHead(val)
             return
         # the node before
-        node = self.__get_item(index - 1)
+        node = self.__get_node(index - 1)
         if node == None:
             return
         if node == self.tail:
@@ -61,7 +61,7 @@ class MyLinkedList:
                 self.tail = self.head.next
             self.head = self.head.next
             return
-        node = self.__get_item(index - 1)
+        node = self.__get_node(index - 1)
         if node == None or node.next == None:
             return
         if node.next == self.tail:
