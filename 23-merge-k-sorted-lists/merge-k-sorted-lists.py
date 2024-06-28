@@ -10,19 +10,19 @@ class Solution:
         if len(lists) == 1:
             return lists[0]
         elif len(lists) == 2:
-            current0 = lists[0]
-            current1 = lists[1]
+            l0 = lists[0]
+            l1 = lists[1]
             dummy_head = ListNode()
             current_res = dummy_head
-            while current0 != None and current1 != None:
-                if current0.val < current1.val:
-                    current_res.next = current0
-                    current0 = current0.next
+            while l0 != None and l1 != None:
+                if l0.val < l1.val:
+                    current_res.next = l0
+                    l0 = l0.next
                 else:
-                    current_res.next = current1
-                    current1 = current1.next
+                    current_res.next = l1
+                    l1 = l1.next
                 current_res = current_res.next
-            current_res.next = current0 or current1
+            current_res.next = l0 or l1
             return dummy_head.next
                 
         else:
