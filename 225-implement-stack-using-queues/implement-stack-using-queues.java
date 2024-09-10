@@ -11,11 +11,11 @@ class MyStack {
     }
     
     public void push(int x) {
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             aux.add(q.poll());
         }
         q.add(x);
-        while(!aux.isEmpty()){
+        while (!aux.isEmpty()) {
             q.add(aux.poll());
         }
     }
