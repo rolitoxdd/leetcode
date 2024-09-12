@@ -2,8 +2,7 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 class MyStack {
-    Queue<Integer> q;
-    Queue<Integer> aux;
+    Queue<Integer> q, aux;
 
     public MyStack() {
         q = new LinkedList<>();
@@ -11,11 +10,11 @@ class MyStack {
     }
     
     public void push(int x) {
-        while (!q.isEmpty()) {
+        while(!q.isEmpty()) {
             aux.add(q.poll());
         }
         q.add(x);
-        while (!aux.isEmpty()) {
+        while(!aux.isEmpty()) {
             q.add(aux.poll());
         }
     }
