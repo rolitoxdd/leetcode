@@ -1,7 +1,6 @@
 import java.util.Stack;
 
 class MyQueue {
-
     Stack<Integer> s;
     Stack<Integer> aux;
     public MyQueue() {
@@ -10,12 +9,14 @@ class MyQueue {
     }
     
     public void push(int x) {
-        while (!s.empty()) {
-            aux.push(s.pop());
+        while (!s.empty()){
+          int tmp = s.pop();
+          aux.push(tmp);
         }
         s.push(x);
-        while(!aux.empty()) {
-            s.push(aux.pop());
+        while (!aux.empty()) {
+            int tmp = aux.pop();
+            s.push(tmp);
         }
     }
     
