@@ -18,11 +18,13 @@ import java.util.List;
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        if (root == null) return new ArrayList<>();
+        if (root == null) {
+            return new ArrayList<Integer>();
+        }
         List<Integer> left = inorderTraversal(root.left);
-        List<Integer> right = inorderTraversal(root.right);
         List<Integer> res = new ArrayList<>(left);
         res.add(root.val);
+        List<Integer> right = inorderTraversal(root.right);
         res.addAll(right);
         return res;
     }
