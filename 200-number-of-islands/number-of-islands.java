@@ -17,8 +17,8 @@ class Solution {
         if (j < 0) return;
         if (i >= grid.length) return;
         if (j >= grid[0].length) return;
-        if (grid[i][j] == '0') return;
-        grid[i][j] = '0';
+        if (grid[i][j] != '1') return;
+        grid[i][j] = 'X';
         dfs(grid,i+1,j);
         dfs(grid,i-1,j);
         dfs(grid,i,j+1);
