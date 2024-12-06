@@ -14,17 +14,18 @@ class Solution {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (int i = 0; i < lists.length; i++) {
             ListNode l = lists[i];
-            while(l != null) {
+            while (l != null) {
                 pq.add(l.val);
                 l = l.next;
             }
         }
-        ListNode aux = new ListNode();
-        ListNode curr = aux;
+        ListNode res = new ListNode();
+        ListNode curr = res;
         while (!pq.isEmpty()) {
-            curr.next = new ListNode(pq.poll());
+            curr.next = new ListNode();
             curr = curr.next;
+            curr.val = pq.poll();
         }
-        return aux.next;
+        return res.next;
     }
 }
