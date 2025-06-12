@@ -1,17 +1,18 @@
-import java.util.*;
+import java.util.PriorityQueue;
+import java.util.HashMap;
+
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        HashMap<Integer, Integer> m = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int n = nums[i];
-            if (!m.containsKey(n)) {
-                m.put(n, 1);
-            } else {
-                m.put(n, m.get(n) + 1);
+        HashMap<Integer, Integer> f = new HashMap<>();
+        for (int n : nums) {
+            if (!f.containsKey(n)) {
+                f.put(n, 0);
             }
+            f.put(n,f.get(n) + 1);
         }
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> m.get(b) - m.get(a));
-        for (Integer key : m.keySet()) {
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> f.get(b) - f.get(a));
+        for (int key: f.keySet()) {
             pq.add(key);
         }
 
