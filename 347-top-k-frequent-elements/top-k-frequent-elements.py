@@ -1,14 +1,22 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        d = {}
+        freqs = {}
         for n in nums:
-            if n not in d:
-                d[n] = 1
-            else:
-                d[n] += 1
-        d = sorted(d.items(), key= lambda x: x[1], reverse=True)
-        res = []
-        for i in range(k):
-            res.append(d[i][0])
-        return res
+            freqs[n] = freqs.get(n, 0) + 1
+        
+        order = [[] for _ in range(len(nums))]
 
+        for n in freqs:
+            f = freqs[n]
+            order[f - 1].append(n)
+        
+        res = []
+        while k:
+            l = order.pop()
+            if not l:
+                continue
+            res.append(l.pop())
+            k -= 1
+            if l:
+                order.append(l)
+        return res
