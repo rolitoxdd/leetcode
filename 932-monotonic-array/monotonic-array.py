@@ -1,6 +1,10 @@
 class Solution:
     def isMonotonic(self, nums: List[int]) -> bool:
-        direction = 0
+        if nums[-1] - nums[0] > 0:
+            direction = 1
+        else:
+            direction = -1
+    
         for i in range(1, len(nums)):
             sign = nums[i] - nums[i - 1]
             if sign > 0:
@@ -9,8 +13,6 @@ class Solution:
                 sign = -1
             else:
                 sign = 0
-            if not direction:
-                direction = sign
             
             if sign and direction != sign:
                 return False
